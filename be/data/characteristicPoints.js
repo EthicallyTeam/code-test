@@ -9,10 +9,7 @@ const characteristicPoints = {
 }
 
 const sumPointsOfCharacteristics = (charac) => {
-    if (typeof charac === 'string') {
-        return characteristicPoints[charac]
-
-    } else if (Array.isArray(charac)) {
+    if (Array.isArray(charac)) {
         const sum = charac.reduce((accumulator, element) => {
             if (typeof characteristicPoints[element] === 'number') {
                 accumulator += characteristicPoints[element]
