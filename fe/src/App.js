@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+import strawberry from './strawberry.png'
 import './App.css';
+import ProductList from './components/ProductList';
+import CharacteristicPicker from './components/CharacteristicPicker';
+import { useState } from 'react';
 
-function App() {
+
+const App = () => {
+  const [characteristicChoice, setCharacteristicChoice] = useState("All")
+
+  const handleCharacteristicPick = (e) => {
+    let value = e.target.value
+    console.log('🍓 someone picked: ', value)
+    setCharacteristicChoice(value)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={strawberry} className="App-logo" alt="logo" />
+        <h1>
+          Jesse's Product Haus
+        </h1>
+        <p>git'n you yer stuff since 1988</p>
       </header>
+      <div className='characteristic-picker-container'>
+        <CharacteristicPicker 
+          handleCharacChoice={handleCharacteristicPick}
+          selectedCharac={characteristicChoice}
+        />
+      </div>
+      <hr/>
+      <div className='product-list-container'>
+        <ProductList characteristic={characteristicChoice}/>
+      </div>
     </div>
   );
 }
