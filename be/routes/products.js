@@ -7,7 +7,6 @@ router.get('/', function(req, res, next) {
   console.log(req.query)
   let data;
 
-
   try {
     if (_.isEmpty(req.query)) {
       data = productUtil.getAllProductsData() 
